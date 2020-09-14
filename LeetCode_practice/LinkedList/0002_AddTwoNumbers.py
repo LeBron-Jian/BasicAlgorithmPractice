@@ -117,6 +117,28 @@ class Solution:
         if carry > 0:
             pNode.next = ListNode(carry)
         return pHead.next
+    
+    def addTwoNumbers22(self, l1: ListNode, l2: ListNode) -> ListNode:
+        '''
+            自己默写一遍，同时写成自己熟悉的代码
+        '''
+        pnode = ListNode(0)
+        phead = pnode
+        carry = 0
+        while l1 or l2:
+            sums = 0
+            if l1:
+                sums = sums + l1.val
+                l1 = l1.next
+            if l2:
+                sums = sums + l2.val
+                l2 = l2.next
+            pnode.next = ListNode((sums+carry)%10)
+            carry = (sums+carry) // 10
+            pnode = pnode.next
+        if carry != 0:
+            pnode.next = ListNode(carry)
+        return phead.next
 
 
 data1 = ListNode([1, 2, 3])
