@@ -23,6 +23,8 @@ class Solution:
         我们可以递归的定义两个链表的合并操作
         当链表l1为空，则不用合并直接为l2，当链表l2为空时候，则直接返回l1
         当链表l1 l2均不为空，则递归的遍历l1,l2
+            不过我们要判断 l1 和 l2 哪一个链表的头节点的值更小，然后递归的决定
+            下一个添加到结果里的节点。如果两个链表有一个为空，递归结束。
         :param l1:
         :param l2:
         :return:
@@ -37,10 +39,37 @@ class Solution:
         else:
             l2.next = self.mergeTwoLists(l1, l2.next)
             return l2
+    
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        ''' 
+            对上面方法的改进，将判断放入else里面，我发现无论是时间，还是空间
+            都应该更快，从提交结果来看。
+            但是两种方法的时间复杂度都为O(n)，空间复杂度为O(n)
+            
+            对复杂度的分析：
+            时间复杂度：O(n+m)，其中 n 和 m 分别为两个链表的长度。每次调用都会取掉l1或者l2的头结点
+                        （直到至少有一个链表为空），函数mergeTwoList至多只会递归调用每个节点依次，
+                        因此，时间复杂度取决于合并后的链表长度，即O(n+m)
+            空间复杂度：O(n+m)，其中 n 和 m 分别为两个链表的长度。递归调用 mergeTwoLists 函数时需要
+                        消耗空间，栈空间的大小取决于递归调用的深度。结束递归调用时mergeTwoLists函数最多
+                        调用 n+m 次，因此空间复杂度为O(n+m)
+        '''
+        if l1 is None:
+            return l2
+        elif l2 is None:
+            return l1
+        else:
+            if l1.val < l2.val:
+                l1.next = self.mergeTwoLists(l1.next, l2)
+                return l1
+            else:
+                l2.next = self.mergeTwoLists(l1, l2.next)
+                return l2
 
     def mergeTwoLists1(self, l1: ListNode, l2: ListNode) -> ListNode:
         '''
-        最简单的思路
+        最简单的思路：
+        这里新增了一个list，并且使用了sort()内置方法。。。。
         :param l1:
         :param l2:
         :return:
@@ -63,6 +92,11 @@ class Solution:
         return head.next
 
     def mergeTwoLists2(self, l1: ListNode, l2: ListNode) -> ListNode:
+        '''
+            我们也可以使用迭代的方法来实现上述算法，当l1和l2都不是空链表时，判断 l1 和 l2 哪一个
+            链表的头节点的值更小，将较小值的节点添加到结果里，当一个节点被添加到结果里之后，将对应
+            链表中的节点向后移一位。
+        '''
         # 创建哑节点作为 结果链表 的开头,因此是不能移动的
         # 为了把两个链表 merge 的结果放到结果链表的最后，就需要一个move游标指向 结果链表 的最后一个元素
         # 初始时，move指向哑节点，之后随着结果链表的增加而不停地向后移动，始终保持其指向结果链表 的最后一个元素
