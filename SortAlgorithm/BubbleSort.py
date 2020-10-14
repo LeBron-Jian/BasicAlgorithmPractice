@@ -11,16 +11,24 @@
 def bubble_sort(li):
     for i in range(len(li) - 1):
         for j in range(len(li) - i - 1):
-            if li[i] > li[j + 1]:
+            if li[j] > li[j + 1]:
                 li[j], li[j + 1] = li[j + 1], li[j]
 
 
 def optimize_bubble_sort(li):
-    for i in range(len(li) - 1):
+    for i in range(len(li)-1):
         exchange = False
-        for j in range(len(li) - 1 - i):
-            li[j], li[j + 1] = li[j + 1], li[j]
-            exchange = True
+        for j in range(len(li)-1-i):
+            if li[j] > li[j+1]:
+                li[j],li[j+1] = li[j+1],li[j]
+                exchange =True
         if not exchange:
             return li
     return li
+
+origin_list = [9,8,7,6,5,4,3,2,1]
+print('origin_list:', origin_list)
+res = optimize_bubble_sort(origin_list)
+print(res)
+# origin_list: [9, 8, 7, 6, 5, 4, 3, 2, 1]
+# [1, 2, 3, 4, 5, 6, 7, 8, 9]
