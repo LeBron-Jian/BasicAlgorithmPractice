@@ -1,7 +1,8 @@
 #_*_coding:utf-8_*_
 '''
 232
-题目：
+题目：  用栈实现队列
+
     请你仅使用两个栈实现先入先出队列。队列应当支持队列的支持的所有操作（push，pop，peek，empty） 
     实现MyQueue类：
         void push(int x) 将元素 x 推到队列的末尾
