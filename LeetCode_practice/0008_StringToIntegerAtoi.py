@@ -113,7 +113,7 @@ class Solution:
         return res
 
 
-INT_MAX, INT_MIN = 2**32-1, -2**31
+INT_MAX, INT_MIN = 2**31-1, -2**31
 class Automaton:
     def __init__(self):
         self.state = 'start'
