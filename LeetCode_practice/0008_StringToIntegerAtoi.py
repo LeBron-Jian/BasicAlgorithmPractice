@@ -143,7 +143,7 @@ class Automaton:
         elif self.state == 'signed':
             self.sign = 1 if c == '+' else -1
 
-class Soluions:
+class Solutions:
 
     def myAtoi(self, s: str) -> int:
         '''
