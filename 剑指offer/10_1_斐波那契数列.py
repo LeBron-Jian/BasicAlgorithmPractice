@@ -35,7 +35,7 @@ class Solution:
         '''
         if N <= 1:
             return N
-        return (self.fib1(N-1) + self.fib1(N-2))%(1e9+7)
+        return (self.fib1(N-1) + self.fib1(N-2))%(1000000007)
 
 
     def fib2(self, N: int) -> int:
@@ -53,7 +53,7 @@ class Solution:
         dp[0], dp[1] = 0, 1
         for i in range(2, N+1):
             dp[i] = dp[i-1] + dp[i-2]
-        return dp[N]%(1e9+7)
+        return dp[N]%(1000000007)
 
 
     def fib3(self, N: int) -> int:
@@ -70,7 +70,7 @@ class Solution:
         a, b = 0, 1
         for i in range(2, N+1):
             a, b = b, a+b
-        return b%(1e9+7)
+        return b%(1000000007)
 
     def fib4(self, N: int) -> int:
         '''
@@ -80,4 +80,4 @@ class Solution:
                 空间复杂度：O(1)
         '''
         golden_ratio = (1 + 5**0.5)/2
-        return int(golden_ratio ** N+1)/5**0.5%(1e9+7)
+        return int(1/(5**0.5)*(1+gelden_ratio**N))%(1000000007)
