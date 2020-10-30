@@ -84,7 +84,7 @@ def climbStairs(n):
     :param n:
     :return:
     '''
-    if n < 2:
+    if n <= 2:
         return n
     a, b = 1, 2
     for i in range(3, n + 1):
