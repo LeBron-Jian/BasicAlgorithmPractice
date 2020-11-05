@@ -15,6 +15,9 @@
     输出: 1->2->3
 
 
+注意：链表相关题的时候，总是返回head，原因
+
+    head是头节点，位置没变，是固定的。而其他node做了引用，我们使用node做了链表的操作，所以最后均返回头结点。
 '''
 # Definition for singly-linked list.
 class ListNode:
