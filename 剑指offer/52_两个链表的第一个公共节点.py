@@ -102,7 +102,17 @@ class Solution:
             时间复杂度为 O(m*n)
             空间复杂度为 O(1)
         '''
-        pass
+        res = []
+        node1, node2 = headA, headB
+        while node1:
+            res.append(node1)
+            node1 = node1.next
+
+        while node2:
+            if node2 in res:
+                return node2
+            node2 = node2.next
+        return None
 
 
     def getIntersectionNode2(self, headA: ListNode, headB: ListNode) -> ListNode:
