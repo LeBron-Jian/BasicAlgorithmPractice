@@ -37,3 +37,24 @@ class Solution:
             nums[index] = -nums[index]
         return res
 
+    
+    
+ class Solution:
+    def findDuplicates(self, nums: List[int]) -> List[int]:
+        '''
+            同样是原地修改，这里写的简单易懂：
+            [4, 3, 2, 7, 8, 2, 3, 1]
+            [-4, -3, -2, -7, 8, 2, -3, -1]
+        '''
+        if not nums:
+            return []
+        res = []
+        for num in nums:
+            index = abs(num) - 1
+            if nums[index] > 0:
+                # nums[index] *= -1
+                nums[index]  = - nums[index]
+            else:
+                # res.append(index+1)
+                res.append(abs(num))
+        return res
