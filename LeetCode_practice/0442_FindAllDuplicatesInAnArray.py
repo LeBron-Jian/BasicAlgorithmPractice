@@ -58,3 +58,27 @@ class Solution:
                 # res.append(index+1)
                 res.append(abs(num))
         return res
+
+    
+  class Solution2:
+    def findDuplicates(self, nums: List[int]) -> List[int]:
+        '''
+            解题思路：索引+1正好与值对应，进行匹配排序，如果第二次遇到相同的值则必为重复值
+            复杂度分析：
+                时间复杂度O(n)  最多遍历两次
+                空间复杂度O(n)  若不算输出空间则为O(1)
+        '''
+        i = 0
+        res = []
+        for i in range(len(nums)):
+            index = nums[i]-1
+            # print('dadaasd:',index)
+            # while nums[index] != nums[i]:
+                # nums[index], nums[i] = nums[i], nums[index]
+            while nums[nums[i]-1] != nums[i]:
+                nums[nums[i] - 1],nums[i] = nums[i], nums[nums[i] - 1]
+        
+        for i in range(len(nums)):
+            if nums[i] != i+1:
+                res.append(nums[i])
+        return res
