@@ -93,8 +93,8 @@ class Solution:
         # 循环，知道无法强制转成Int，跳出循环
         while i <= len(s):
             try:
-                res = int(str[:i])
-                # res = int(str[:i+1])
+                res = int(s[:i])
+                # res = int(s[:i+1])
                 i += 1
             except:
                 break
