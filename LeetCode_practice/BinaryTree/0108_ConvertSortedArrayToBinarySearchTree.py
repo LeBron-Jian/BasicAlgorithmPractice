@@ -110,6 +110,10 @@ class Solution:
                 1，总是选择中间位置左边的数字作为根节点
                 2，总是选择中间位置右边的数字作为根节点
                 3，两种方法的结合，选择任意一个中间位置数字作为根节点
+
+            复杂度分析：
+                时间复杂度：O(n)
+                空间复杂度：O(logn) 
         '''
         if len(nums) == 0:
             return None
@@ -121,7 +125,7 @@ class Solution:
         #     root.left = left
         #     return root
         mid = len(nums)
-        root = TreeNode(nums[mid//2])
+        root = TreeNode(nums[mid])
         root.left = self.sortedArrayToBST3(nums[:mid])
         root.right = self.sortedArrayToBST3(nums[mid+1:])
         return root
