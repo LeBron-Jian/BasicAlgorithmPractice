@@ -62,7 +62,7 @@ class Solution:
       '''
       minprice, maxprofit = 1e9, 0
       for price in prices:
-        maxprofit = max(price-maxprofit, maxprofit)
+        maxprofit = max(price-minprice, maxprofit)
         minprice = min(minprice, price)
 
       return maxprofit
