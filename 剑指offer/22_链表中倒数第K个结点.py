@@ -37,8 +37,8 @@ class Solution:
             count += 1
         res = head
         for i in range(count-k):
-            head = head.next
-        return res.next
+            res = res.next
+        return res
 
 
     def getKthFromEnd1(self, head: ListNode, k: int) -> ListNode:
