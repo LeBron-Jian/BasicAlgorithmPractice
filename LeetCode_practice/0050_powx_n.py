@@ -70,3 +70,21 @@ class Solution:
                 res *=x
                 n -= 1
         return res
+
+    
+        def myPow5(self, x, n):
+            '''
+                位运算是同样的道理，只不过
+                n>>1 等价于  n/=2
+                n%2==1 等价于 n&1 == 1 （判断是否为奇数）
+            '''
+            res = 1
+            if n < 0:
+                x = 1/x
+                n = -n
+            while n:
+                if n &1:
+                    res = res*x
+                x *= x
+                n >>=1
+            return res
