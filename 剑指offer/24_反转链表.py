@@ -72,7 +72,22 @@ class Solution:
             move = move.next
         return cur
 
-
+    def reverseList(self, head: ListNode) -> ListNode:
+        if not head:
+            return None
+        stack = []
+        while head:
+            stack.append(head.val)
+            head = head.next
+        
+        res = ListNode(None)
+        cur = res
+        while stack:
+            cur.next = ListNode(stack.pop())
+            cur = cur.next
+        return res.next
+    
+    
     def reverseList1(self, head: ListNode) -> ListNode:
         '''
             双指针迭代
