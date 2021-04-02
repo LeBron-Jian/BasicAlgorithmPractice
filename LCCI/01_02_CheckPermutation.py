@@ -22,6 +22,8 @@
 
 
 '''
+from collections import Counter
+
 
 class Solution:
     def CheckPermutation(self, s1: str, s2: str) -> bool:
@@ -34,3 +36,10 @@ class Solution:
             return True
         else:
             return False
+       
+    def CheckPermutation2(self, s1: str, s2: str) -> bool:
+        return Counter(s1) == Counter(s2)
+    
+    def CheckPermutation3(self, s1: str, s2: str) -> bool:
+        return sorted(s1) == sorted(s2)
+    
