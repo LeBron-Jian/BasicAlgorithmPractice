@@ -57,7 +57,7 @@ class Solution:
             if i == ch:
                 count += 1
             else:
-                res += i + str(count)
+                res += ch + str(count)
                 ch = i
                 count = 1
 
