@@ -30,3 +30,15 @@ class Solution:
             former = former.next
             latter = latter.next
         return latter.val
+    
+    
+    def kthToLast2(self, head: ListNode, k: int) -> int:
+        count = 0
+        move = head
+        while move:
+            count += 1
+            move = move.next
+        res = count - k
+        for _ in range(res):
+            head = head.next
+        return head.val
